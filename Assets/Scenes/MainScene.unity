@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785ee4789400c964ba8e0b0123e7a0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_nbPoints: 500
+  m_nbPoints: 250
   m_LimitUL: {fileID: 279760564}
   m_LimitDL: {fileID: 1983001988}
   m_LimitUR: {fileID: 410584642}
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4234cd2c43978e041bbe9323c195c4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 30
+  resolution: 50
   drawColor: {r: 1, g: 1, b: 1, a: 1}
   _close: 0
   points: []

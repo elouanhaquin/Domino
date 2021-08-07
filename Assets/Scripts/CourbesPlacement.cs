@@ -17,19 +17,24 @@ public class CourbesPlacement : MonoBehaviour
 
     void Awake()
     {
-        float minX = m_LimitDR.position.x;
-        float minZ = m_LimitDR.position.z;
-        float maxX = m_LimitUL.position.x;
-        float maxZ = m_LimitUL.position.z;
+        float minX = m_LimitDL.position.x;
+        float minZ = m_LimitDL.position.z;
+        float maxX = m_LimitUR.position.x;
+        float maxZ = m_LimitUR.position.z;
 
         float posX = minX;
         float posZ = minZ;
 
+        bool isRight = false;
+        
         for (int i = 1; i <= m_nbPoints; i++)
-        {
-            posX = Mathf.Lerp(minX, maxX, i/(float)m_nbPoints);
-            posZ = Mathf.Lerp(minZ, maxZ, Mathf.Sin(i));
-            m_scriptBezier.AddPointAt(new Vector3(posX, 3, posZ));
+        {  
+            m_scriptBezier.AddPointAt(new Vector3(posX, 0, isRight ? minZ : maxZ ));
+            m_scriptBezier[i-1].globalHandle1 = new Vector3(posX -10, 0, isRight ? minZ-1.4f : maxZ+1.4f);
+            m_scriptBezier[i-1].globalHandle2 = new Vector3(posX +10, 0, isRight ? minZ+1.4f : maxZ-1.4f);
+          //  m_scriptBezier[i-1].globalHandle2 = new Vector3(posX, 3, isRight ? minZ+1 : maxZ-1);
+            posX = i % 2 != 0 ? posX + 10 : posX;
+            isRight = i % 2 ==0;
         }
     }
 

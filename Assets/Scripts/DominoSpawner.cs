@@ -25,9 +25,14 @@ public class DominoSpawner : MonoBehaviour
         {
             if (m_curve != null && m_curve.GetPointAt(i / (float)dominoMaster.transform.childCount+1) != null && i + 1 < m_maxDominos)
             {
-                var vec = new Vector3(m_curve.GetPointAt((i+1) * m_iteratorStep).x, m_curve.GetPointAt((i + 1) * m_iteratorStep).y, m_curve.GetPointAt((i + 1) * m_iteratorStep).z);
+
                 var go = Instantiate(m_domino, new Vector3(m_curve.GetPointAt(m_pointIterator).x, m_curve.GetPointAt(m_pointIterator).y, m_curve.GetPointAt(m_pointIterator).z), Quaternion.identity, dominoMaster.transform);
-                go.transform.LookAt(vec);
+
+                if (m_curve.GetPointAt((i + 1)) != null)
+                {
+                    var vec = new Vector3(m_curve.GetPointAt((i + 1) * m_iteratorStep).x, m_curve.GetPointAt((i + 1) * m_iteratorStep).y, m_curve.GetPointAt((i + 1) * m_iteratorStep).z);
+                    go.transform.LookAt(vec);
+                }
 
                 m_pointIterator += m_iteratorStep;
             }
